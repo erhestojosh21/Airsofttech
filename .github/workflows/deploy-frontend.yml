@@ -1,34 +1,50 @@
-name: Deploy React Frontend to Azure
+name: Deploy Frontend to Azure App Service
 
 on:
   push:
     branches:
-      - main
+      - main  # triggers on push to main branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node
+      # 2️⃣ Setup Node.js 22
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
 
+      # 3️⃣ Install frontend dependencies
       - name: Install dependencies
-        run: npm ci
-        working-directory: frontend   # <--- added
+        working-directory: ./frontend
+        run: npm install
 
+      # 4️⃣ Copy production env file (optional)
+      - name: Prepare production environment
+        working-directory: ./frontend
+        run: cp .env.production .env
+
+      # 5️⃣ Build React app for production
       - name: Build React app
-        run: npm run build
-        working-directory: frontend   # <--- added
+        working-directory: ./frontend
+        run: CI=false npm run build
 
+      # 6️⃣ Azure login using Service Principal
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 7️⃣ Deploy build folder to Azure App Service
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'airsoftfrontend-app'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONTEND }}
-          package: frontend/build       # <--- build folder inside frontend
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          slot-name: production
+          package: ./frontend/build

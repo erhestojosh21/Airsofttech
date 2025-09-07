@@ -45,11 +45,13 @@ app.use(cookieParser());
 const cors = require("cors");
 
 app.use(cors({
-  origin: ["http://localhost:3000", "https://airsoft-api-f6bhepeydyg0d3ej.southeastasia-01.azurewebsites.net"],
+  origin: [
+    "http://localhost:3000", // local development
+    "https://airsoft-frontend-hebaa4f6g4gyhmeb.southeastasia-01.azurewebsites.net" // deployed frontend
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-
 
 app.use(express.json({ limit: "10mb" })); // Allow up to 10MB requests
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
