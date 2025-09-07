@@ -46,11 +46,12 @@ jobs:
       contents: read
 
     steps:
-      # Download frontend artifact
+      # Download frontend artifact into a fixed folder
       - name: Download Frontend Artifact
         uses: actions/download-artifact@v4
         with:
           name: frontend-app
+          path: ./frontend-app   # <- ensures folder exists for deploy
 
       # Azure login with single JSON secret
       - name: Azure Login
@@ -64,4 +65,4 @@ jobs:
         with:
           app-name: 'airsoft-frontend'
           slot-name: 'Production'
-          package: ./frontend-app
+          package: ./frontend-app   # <- points to downloaded artifact folder
