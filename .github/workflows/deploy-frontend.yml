@@ -3,37 +3,40 @@ name: Deploy Frontend to Azure App Service
 on:
   push:
     branches:
-      - main  
+      - main  # triggers on push to main branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # 1️⃣ Checkout the repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-     
+      # 2️⃣ Setup Node.js 22
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
 
+      # 3️⃣ Install frontend dependencies
       - name: Install dependencies
         working-directory: ./frontend
         run: npm install
 
-    
+      # 4️⃣ Build React production
       - name: Build React app
         working-directory: ./frontend
         run: CI=false npm run build
 
-    
+      # 5️⃣ Azure login using Service Principal
       - name: Azure Login
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
 
       # 6️⃣ Deploy build folder to Azure App Service
