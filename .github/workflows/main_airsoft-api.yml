@@ -24,7 +24,6 @@ jobs:
           node-version: '22.x'
 
       - name: npm install, build, and test
-        working-directory: ./backend
         run: |
           npm install
           npm run build --if-present
@@ -62,5 +61,5 @@ jobs:
         with:
           app-name: 'airsoft-api'
           slot-name: 'Production'
-          package: ./backend
+          package: .
           
