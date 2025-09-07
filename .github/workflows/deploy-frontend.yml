@@ -22,26 +22,13 @@ jobs:
 
       # 3️⃣ Install frontend dependencies
       - name: Install dependencies
-        working-directory: ./frontend
-        run: npm install
+        run: npm ci
+        working-directory: frontend   # <--- added
 
-      # 4️⃣ Copy production env file (optional)
-      - name: Prepare production environment
-        working-directory: ./frontend
-        run: cp .env.production .env
-
-      # 5️⃣ Build React app for production
       - name: Build React app
-        working-directory: ./frontend
-        run: CI=false npm run build
+        run: npm run build
+        working-directory: frontend   # <--- added
 
-      # 6️⃣ Azure login using Service Principal
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      # 7️⃣ Deploy build folder to Azure App Service
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
