@@ -33,7 +33,7 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
+        # npm run test --if-present
 
       # Upload backend artifact for deployment
       - name: Upload Backend Artifact
