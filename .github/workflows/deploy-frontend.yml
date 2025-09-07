@@ -59,7 +59,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_JSON }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # Deploy to Azure Static Web App or Web App
       - name: Deploy Frontend to Azure
