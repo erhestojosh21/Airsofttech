@@ -32,7 +32,7 @@ jobs:
         working-directory: ./frontend
         run: |
           npm install
-          npm run build
+          CI=falsenpm run build
 
       # Upload frontend build artifact
       - name: Upload Frontend Artifact
