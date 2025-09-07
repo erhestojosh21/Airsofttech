@@ -1,6 +1,3 @@
-# File: .github/workflows/deploy-frontend.yml
-# Deploy React frontend only to Azure Static Web App - airsoft-frontend
-
 name: Build and Deploy React Frontend to Azure
 
 on:
@@ -8,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'frontend/**'    # Only trigger when frontend files change
+      - 'frontend/**'
   workflow_dispatch:
 
 jobs:
@@ -21,13 +18,13 @@ jobs:
       # Checkout repo
       - uses: actions/checkout@v4
 
-      # Set Node.js version
+      # Node.js setup
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
 
-      # Install dependencies and build React app
+      # Install dependencies and build React
       - name: Install and Build Frontend
         working-directory: ./frontend
         run: |
@@ -49,22 +46,22 @@ jobs:
       contents: read
 
     steps:
-      # Download frontend build artifact
+      # Download frontend artifact
       - name: Download Frontend Artifact
         uses: actions/download-artifact@v4
         with:
           name: frontend-app
 
-      # Login to Azure
+      # Azure login with single JSON secret
       - name: Azure Login
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Deploy to Azure Static Web App or Web App
+      # Deploy frontend to Azure
       - name: Deploy Frontend to Azure
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'airsoft-frontend'   # Your frontend app name
+          app-name: 'airsoft-frontend'
           slot-name: 'Production'
-          package: ./frontend/build
+          package: ./frontend-app

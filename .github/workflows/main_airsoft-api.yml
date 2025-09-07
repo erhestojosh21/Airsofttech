@@ -1,4 +1,3 @@
-# File: .github/workflows/deploy-backend.yml
 name: Build and Deploy Backend to Azure
 
 on:
@@ -6,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'backend/**'   # Only trigger when backend files change
+      - 'backend/**'
   workflow_dispatch:
 
 jobs:
@@ -16,23 +15,23 @@ jobs:
       contents: read
 
     steps:
-      # 1️⃣ Checkout repo
+      # Checkout repo
       - uses: actions/checkout@v4
 
-      # 2️⃣ Set Node.js version
+      # Node.js setup
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
 
-      # 3️⃣ Install dependencies (skip test for now)
+      # Install dependencies and build if needed
       - name: Install Backend Dependencies
         working-directory: ./backend
         run: |
           npm install
           npm run build --if-present
 
-      # 4️⃣ Upload backend artifact
+      # Upload backend as artifact
       - name: Upload Backend Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -47,22 +46,22 @@ jobs:
       contents: read
 
     steps:
-      # 1️⃣ Download backend artifact
+      # Download backend artifact
       - name: Download Backend Artifact
         uses: actions/download-artifact@v4
         with:
           name: backend-app
 
-      # 2️⃣ Azure login using single JSON secret
+      # Azure login with single JSON secret
       - name: Azure Login
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_JSON }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # 3️⃣ Deploy backend to Azure Web App
+      # Deploy backend to Azure
       - name: Deploy Backend to Azure
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'airsoft-api'
           slot-name: 'Production'
-          package: ./backend-app   # Path of the downloaded artifact
+          package: ./backend-app
