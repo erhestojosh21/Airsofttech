@@ -66,7 +66,7 @@ const io = socketIo(server, {
 */
 
 const productCache = new NodeCache({ stdTTL: 300 }); // Cache for 5 minutes
-const secretKey = process.env.JWT_SECRET; // Change this to a secure key
+const secretKey = "Hakdomatigas0"; // Change this to a secure key
 const authenticateToken = require('./middleware/authMiddleware')(pool, secretKey);
 const tempUsers = {}; // Temporary storage for OTP & user data
 const otpStore = {}; // OTP store for password reset
