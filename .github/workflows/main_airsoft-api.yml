@@ -1,15 +1,13 @@
 # File: .github/workflows/deploy-backend.yml
-# Deploy Node.js backend only to Azure Web App - airsoft-api
-
-name: Build and Deploy Node.js Backend to Azure
+name: Build and Deploy Backend to Azure
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'backend/**'    # Only trigger when backend files change
-  workflow_dispatch:     # Allows manual trigger
+      - 'backend/**'   # Only trigger when backend files change
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,24 +16,23 @@ jobs:
       contents: read
 
     steps:
-      # Checkout repo
+      # 1️⃣ Checkout repo
       - uses: actions/checkout@v4
 
-      # Set Node.js version
+      # 2️⃣ Set Node.js version
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
 
-      # Install dependencies, build, and test (backend only)
-      - name: Install and Build Backend
+      # 3️⃣ Install dependencies (skip test for now)
+      - name: Install Backend Dependencies
         working-directory: ./backend
         run: |
           npm install
           npm run build --if-present
-        # npm run test --if-present
 
-      # Upload backend artifact for deployment
+      # 4️⃣ Upload backend artifact
       - name: Upload Backend Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -50,22 +47,22 @@ jobs:
       contents: read
 
     steps:
-      # Download backend artifact
+      # 1️⃣ Download backend artifact
       - name: Download Backend Artifact
         uses: actions/download-artifact@v4
         with:
           name: backend-app
 
-      # Login to Azure
+      # 2️⃣ Azure login using single JSON secret
       - name: Azure Login
         uses: azure/login@v2
         with:
-         creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS_JSON }}
 
-      # Deploy backend to Azure Web App
-      - name: Deploy Backend to Azure Web App
+      # 3️⃣ Deploy backend to Azure Web App
+      - name: Deploy Backend to Azure
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'airsoft-api'
           slot-name: 'Production'
-          package: ./backend
+          package: ./backend-app   # Path of the downloaded artifact
