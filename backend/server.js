@@ -42,7 +42,15 @@ const PORT = process.env.PORT || 5000;
 
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+const cors = require("cors");
+
+app.use(cors({
+  origin: ["http://localhost:3000", "https://airsoft-api-f6bhepeydyg0d3ej.southeastasia-01.azurewebsites.net"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
+
 app.use(express.json({ limit: "10mb" })); // Allow up to 10MB requests
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
