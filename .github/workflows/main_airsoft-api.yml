@@ -29,7 +29,7 @@ jobs:
         working-directory: ./backend
         run: |
           npm install
-          npm run build --if-present
+          CI=false npm run build --if-present
 
       # Upload backend as artifact
       - name: Upload Backend Artifact
