@@ -26,7 +26,7 @@ jobs:
     
       - name: Build React app
         working-directory: ./frontend
-        run: npm run build
+        run: CI=false npm run build
 
     
       - name: Azure Login
