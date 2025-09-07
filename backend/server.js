@@ -42,7 +42,6 @@ const PORT = process.env.PORT || 5000;
 
 app.use(helmet());
 app.use(cookieParser());
-const cors = require("cors");
 
 app.use(cors({
   origin: [
