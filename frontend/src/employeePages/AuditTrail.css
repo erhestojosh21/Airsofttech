@@ -1,0 +1,11 @@
+.audit-trail-container{
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.audit-trail-container table{
+    font-size: 14px;
+    border-collapse: collapse;
+}
+

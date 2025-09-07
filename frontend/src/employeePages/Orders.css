@@ -1,0 +1,241 @@
+.orders-container {
+    width: 93%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.orders-container .title-man{
+    text-align: left;
+    font-weight: 700;
+    color: #8a8a8a;
+}
+
+.orders-container table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    
+}
+
+.orders-container td {
+    border-left: none;
+    border-right: none;
+    border-bottom: #f75252 solid 1px;
+    padding: 18px 18px; 
+    max-width: 200px;
+    font-weight: 500;
+    
+    
+}
+
+.orders-container th{
+    padding: 15px 10px;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    font-weight: 600;
+    color: #8a8a8a;
+    background: #f4f4f4;
+    border-bottom: #f75252 solid 1.5px;
+    
+}
+
+.orders-container .id{
+    text-align: left;
+    font-weight: 600;
+}
+
+.details-button{
+    text-align: right;
+}
+
+.read-order{
+    background-color: white;
+    color: #5b5b5b;  
+    font-weight: 450;
+}
+
+.unread-order {
+    background-color: #e4ffea; 
+    color: #5b5b5b;
+    font-weight: 600;
+    border-left: 4px solid #ff4343; 
+    transition: background-color 0.3s ease;
+}
+
+
+.filter-btn {
+    font-weight: 700;
+    padding: 10px 45px;
+    border: black solid 1px;
+    border-radius: 0px;
+    color: #8a8a8a;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+    
+}
+
+.filter-count{
+    color: #8a8a8a;
+}
+
+.filter-btn:hover {
+    color: #af4c4c;
+}
+
+.filter-btn.active {
+    background: #3f0808;
+    color: #f8efef;
+    
+}
+
+
+
+.top-controls {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    
+}
+
+.search-order-input {
+    font-size: 11px;
+    width: 100%;
+    padding: 12px 10px 10px 50px;
+    height: 42px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-order-input:focus {
+    border-color: #af4c4c;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.orders-container .order-status-processing,
+.orders-container .order-status-verified,
+.orders-container .order-status-shipping,
+.orders-container .order-status-received,
+.orders-container .order-status-completed,
+.orders-container .order-status-cancelled{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.order-status-processing p {
+    color: #ff9900; 
+    background-color: #fff1db;
+    border-radius:5px;
+    border: #dddddd solid 1px;
+    width: fit-content;
+    padding: 5px;
+}
+.order-status-verified p {
+    color: #4caf50;
+    background-color: #e8f5e9;
+    border-radius:5px;
+    border: #dddddd solid 1px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.order-status-shipping p {
+    color: #2196f3;
+    background-color: #e3f2fd;
+    border-radius:5px;
+    border: #dddddd solid 1px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.order-status-received p {
+    color: #673ab7;
+    background-color: #ede7f6;
+    border-radius:5px;
+    border: #dddddd solid 1px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.order-status-completed p {
+    color: #2e7d32;
+    background-color: #e8f5e9;
+    border-radius:5px;
+    border: #dddddd solid 1px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.order-status-cancelled p{
+    color: red;
+    background-color: #ffebee;
+    border-radius:5px;
+    border: #dddddd solid 1px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.filter-count {
+    font-weight: bold;
+    margin-left: 10px;
+    
+}
+
+.orders-container .details-column {
+    max-width: 10px;
+}
+
+.order-date-time{
+    text-align: left;
+}
+
+

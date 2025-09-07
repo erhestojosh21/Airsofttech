@@ -1,0 +1,20 @@
+.dashboard-layout{
+    padding: 20px; 
+    background-color: #f0f2f5;
+}
+
+.dashboard-layout h1{
+    font-size: 40px;
+    color: #212121;
+    margin: 0;
+    font-weight: 600;
+    text-align: start;
+}
+
+.dashboard-layout p{
+    font-size: 16px;
+    color: #606770;
+    margin: 8px 0 ;
+    line-height: 1.5;
+    text-align: start;
+}

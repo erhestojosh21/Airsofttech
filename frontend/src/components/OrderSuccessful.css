@@ -1,0 +1,52 @@
+.order-success-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .order-summary {
+    max-width: fit-content;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ordered-items {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ordered-items li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .ordered-items img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .continue-shopping-btn {
+    background: #0070ba;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .continue-shopping-btn:hover {
+    background: #005ea6;
+  }
+  
+  .reciept-logo{
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+    align-self: left;
+    display: flex;
+  }

@@ -1,0 +1,172 @@
+
+
+.attachment-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  
+  width: 100%;
+}
+
+.attachment-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.attachment-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.attachment-content {
+  flex: 1;
+  padding: 20px;
+  padding-left: 200px;
+  text-align: left;
+}
+
+.attachment-title {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.attachment-description {
+  color: #4a5568;
+  margin-bottom: 20px;
+}
+
+.attachment-button {
+  background-color: #e32e2e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: background-color 0.3s;
+}
+
+.attachment-button:hover {
+  background-color: #ef6767;
+}
+
+.cover{
+  margin-top: 0px;
+  height: auto;
+  width: 100%;
+}
+
+.popular-products-container {
+  padding: 20px 80px;
+  
+}
+
+
+
+.cover1 {
+  display: flex;
+  width: 50%;
+  max-width: 1200px;
+  height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+@font-face {
+  font-family: 'subheader';
+  src: url('../assets/fonts/gunplay-rg.otf') format('opentype');
+}
+
+.cover1-container {
+  display: flex;
+  width: 100%;
+  background: #54421f;
+  background: linear-gradient(237deg, rgba(84, 66, 31, 1) 31%, rgba(36, 8, 4, 1) 99%);
+}
+
+.cover1-content{
+  align-items: center;
+  justify-content: center;
+  margin: auto ;
+}
+
+
+.cover1-content .content-header1{
+  font-family: 'subheader';
+  font-size: 20px;
+  color: #e3d5d5;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.cover1-content .content-header2{
+  font-family: 'subheader';
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 40px;
+  color: #eeecec;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-shadow: 4px 3px 7px rgba(0,0,0,0.53);
+  letter-spacing: 2px;
+}
+
+.short-desc{
+  font-family: 'subheader';
+  font-size: 14px;
+  color: #8fb844;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+
+.cover1-button{
+  margin-top: 25px;
+  background-color: #222121;
+  color: #ffffff;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  letter-spacing: 2px;
+
+}
+
+.cover1-button:hover{
+  background-color: #3a2a27;
+  color: #ffffff;
+  font-size: medium;
+  letter-spacing: 2px;
+}
+
+.qoute-container{
+  align-items: center;
+  justify-content: center;
+  padding: 50px 50px;
+}
+
+.qoute-container .quote{
+  font-family: 'subheader';
+  font-size: 25px;
+  color: #693131;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.qoute-icon{
+  font-size: 100px;
+  color: #693131;
+}

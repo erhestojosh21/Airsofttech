@@ -1,0 +1,322 @@
+.user-profile {
+  display: flex;
+  gap: 20px;
+  
+  }
+  
+.address-container {
+  margin-top: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+  margin-right: 120px;
+  margin-left: 20px;
+}
+
+.user-address-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px 20px;
+  align-items: center;
+}
+
+.user-address-header h2{
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.add-address-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+  
+  .address-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .address-card {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #b5b4b4;
+    padding: 15px;
+    background: #fff;
+    position: relative;
+    min-height: 120px; /* Ensures space for the Default label */
+  }
+  
+  .default-badge {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .address-name {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .address-full-name {
+    font-weight: 600;
+    font-size: 18px;
+    color: #333;
+  }
+
+
+  .address-phone{
+    font-size: 16px;
+    color: #7e7e7e;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: #aaaaaa 1.5px solid;
+  }
+
+  .address-lines {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 16px;
+    color: #515151;
+  }
+
+  .address-lines p {
+    font-size: 16px;
+    margin-top: -10px;
+  }
+
+  .address-lines-row1 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  
+  .address-lines-row1 .edit, .delete, .default {
+    padding: 5px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s, color 0.2s;
+    background: none;
+    color: #000000;
+    border: #000000 solid 2px;
+  }
+  
+  .address-lines-row1 .edit:hover {
+    background-color: #3498db;
+    color: white;
+    border: #3498db solid 2px;
+  }
+
+  .address-lines-row1 .delete:hover {
+    background-color: #e74c3c;
+    color: white;
+    border: #e74c3c solid 2px;
+  }
+
+  .address-lines-row1 .default {
+    padding: 5px 20px;
+  }
+
+  .address-lines-row1 .default:hover {
+    background-color: #91b9a2;
+    color: white;
+    border: #91b9a2 solid 2px;
+  }
+  
+
+  .AddAddressmodal {
+    position: fixed;
+     z-index: 1002;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .first-address {
+    
+    position: relative;
+  }
+
+  .default-text {
+    background: white;
+    color: red;
+    width: 80px;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 12px;
+    border: #e74c3c 1px solid;
+  }
+
+  .address-form-close {
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b2a2a;
+    
+    text-align: right;
+  }
+
+  .address-form-container {
+    background-color: #fff;
+    padding: 20px 40px 20px 40px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative; /* Added for positioning suggestions */
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+
+.address-form-container::-webkit-scrollbar-track {
+  background: #f2f2f2;
+  border-radius: 10px;
+}
+
+.address-form-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.address-form-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+  }
+
+
+  .form-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #6b2a2a;
+    margin-bottom: 5px;
+  }
+  
+  .form-subheader {
+    font-size: 14px;
+    color: #a37070;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .address-form .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .address-form input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  
+  .address-form input:focus {
+    border-color: #cf5c5c;
+  }
+  
+  .section-label {
+    font-size: 14px;
+    color: #865353;
+    margin: 20px 0 10px;
+    display: block;
+    font-weight: 600;
+  }
+  
+  .address-icon-row {
+    align-items: center;
+    position: relative;
+  }
+  
+  .location-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 16px;
+    color: #fa8b8b;
+  }
+  
+  .address-icon-row input {
+    padding-left: 32px;
+  }
+  
+  .address-form-container .submit-btn {
+    background-color: #6b2a2a;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .address-form-container .submit-btn:hover {
+    background-color: #592121;
+  }
+
+  /* Styles for address suggestions */
+  .suggestions-list {
+    position: absolute;
+    top: 100%; /* Position below the input */
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10; /* Ensure it appears above other elements */
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .suggestions-list li {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .suggestions-list li:hover {
+    background-color: #f0f0f0;
+  }

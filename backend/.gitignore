@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+
+# Logs
+npm-debug.log
+yarn-error.log
+logs
+*.log
+
+# Coverage
+coverage/
+
+# Build
+dist/

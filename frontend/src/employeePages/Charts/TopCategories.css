@@ -1,0 +1,22 @@
+.top-categories-box {
+    background: #f9fafb;
+    padding: 5px 20px 80px;
+    border-radius: 12px;
+    flex: 1;
+    max-width: 400px;
+    max-height: 300px; 
+    box-shadow: 0 2px 8px #0000000d;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .top-categories-box h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .pie-wrapper {
+    flex-grow: 1;
+    position: relative;
+  }
+  

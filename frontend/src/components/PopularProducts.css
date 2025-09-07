@@ -1,0 +1,142 @@
+
+.product-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.product-list::-webkit-scrollbar {
+    display: none; 
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular-products h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-buttons button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.filter-buttons button.active {
+    background-color: #6c5f56;
+    color: #fff;
+    border-color: #6c5f56;
+}
+
+.scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 70px 5px;
+    z-index: 10;
+}
+
+.scroll-btn.left {
+    left: -50px;
+}
+
+.scroll-btn.right {
+    right: -50px;
+}
+
+.product-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    
+}
+
+.popular-product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    min-width: 210px;
+    min-height: 210px;
+    height: 360px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.popular-product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.popular-product-card h3 {
+    text-align: start;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.popular-product-card .product-price {
+    text-align: start;
+    font-size: 14px;
+    font-weight: 500;
+    color: #bb9c14;
+}
+
+.popular-product-card:hover {
+    transform: translateY(-3px);
+    border: #b30000 2px solid;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.rating span {
+    font-size: 12px;
+    color: #555;
+}
+
+.sold-count {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    text-align: end;
+    margin-bottom: -5px;
+}

@@ -1,0 +1,329 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f1f1;
+}
+
+.header-container {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    
+}
+
+marquee {
+    background-color: #000000;
+    color: #ffa4a4;
+    font-size: 14px;
+    padding: 5px; 
+    overflow: hidden;
+    box-sizing: border-box;
+    user-select: text; 
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    animation: marquee 15s linear infinite;
+}
+
+.marquee-header {
+    font-weight: bold;
+    color: #f85f5f;
+}
+
+
+@font-face {
+    font-family: 'subheader';
+    src: url('../assets/fonts/gunplay-rg.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'header';
+    src: url('../assets/fonts/BlackOpsOne-Regular.ttf') format('truetype');
+}
+
+.CompanyName {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+.CompanyName span{
+    color: #b1260a;
+}
+
+.CompanyName .company-title{
+    font-family: 'header';
+    font-style: italic;
+    font-size: 50px;
+    color: #451515; 
+    text-align: center;
+    margin-bottom: 2px;
+    margin-top: -5px;
+    letter-spacing: 3px;
+}
+
+.CompanyName .company-subltitle{
+    font-family: 'subheader';
+    font-size: 11px;
+    color: #4a3b38; 
+    text-align: center;
+    margin-top: -12px;
+    margin-bottom: 4px;
+    letter-spacing: 8px;
+}
+
+/* Top Navigation */
+.top-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3a2a27;
+    padding: 10px 70px;
+    border-bottom: 2px solid #4a3b38;
+    width: 100%;
+    height: 85px;
+    box-sizing: border-box;
+  }
+
+/* Logo */
+.CompanyName .logo{
+    width: 80px;
+    height: auto;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 300px;
+}
+
+.search-bar button {
+    background-color: #e74c3c;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+}
+
+/* Icons */
+.icons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    margin-left: auto;  
+}
+
+.icons .cart-icon {
+    transition: color 0.3s ease;
+    color: #d1d1d1;
+    font-size: 30px;
+}
+
+.icons .cart-icon:hover {
+    color: #f08282;
+}
+
+
+
+.icons .user-icon:hover {
+    color: #f08282;
+}
+
+
+/* Bottom Navigation */
+.bottom-nav {
+    display: flex;
+    justify-content: left;
+    padding: 15px 0px 0px 60px;
+    transition: 0.3s;
+    width: 100%;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.bottom-nav a {
+    position: relative;
+    color: #d1d1d1;
+    text-decoration: none;
+    padding: 10px 30px;
+    font-size: 12px;
+    font-family: 'subheader';
+    letter-spacing: 4px;
+    transition: color 0.3s ease;
+  }
+  
+  .bottom-nav a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 10%;
+  height: 4px;
+  background-color: #f08282;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.bottom-nav a:hover::after,
+.bottom-nav a.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+
+.logout-button {
+    background: #f36969;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+
+.nav-link.active {
+    color: #f08282;
+    font-weight: bold;
+}
+
+
+/* Login Landing page */
+.login-buttons{
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+    white-space: nowrap;
+    display: inline-block;
+    border-left: #8d8d8d 2px solid;
+}
+
+
+.landing-login-button {
+    background: none;
+    color: #d1d1d1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.landing-login-button:hover {
+    color: #f08282;
+}
+
+.landing-signup-button {
+    background: none;
+    color: #d1d1d1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.landing-signup-button:hover {
+    color: #f08282;
+}
+
+
+/* User Dropdown (Logged) */
+.username-dropdown-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: none;
+}
+
+.username-dropdown-container .username {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.username-dropdown-container:hover{
+  background: #333;
+}
+
+.username-dropdown-container .user-icon {
+    transition: color 0.3s ease;
+    color: #d1d1d1;
+    font-size: 25px;
+}
+
+.username-info {
+  color: #5b5b5b;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.username-text {
+  margin: 0;
+  color: #d1d1d1;
+}
+
+.username-dropdown-container .dropdown-icon {
+  font-size: 12px;
+  color: #d1d1d1;
+}
+
+.username-dropdown-container .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #e7e7e7;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 5px;
+  z-index: 100;
+  min-width: 140px;
+}
+
+.username-dropdown-container .dropdown-item {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.username-dropdown-container .dropdown-item:hover {
+  background-color: #ffffff;
+  color: #e10f0f;
+  text-decoration: underline;
+}
+
+.page-content {
+    padding-top: 7%;
+    background-color: #f0f2f5;
+  }

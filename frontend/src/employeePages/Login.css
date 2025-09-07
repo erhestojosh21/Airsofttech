@@ -1,0 +1,222 @@
+
+.loin-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #322e2e;
+  }
+  
+  .login-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 24.5px;
+    background: #322e2e;
+    
+  }
+  
+  .login-image {
+    flex: 0 0 35%;
+    height: 680px;
+    background: url('../assets/airsoft.jpg') no-repeat center center/cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #0000001a;
+  }
+  
+  .login-form-container {
+    flex: 0 0 30%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 4px 8px #0000001a;
+    border-radius: 10px;
+  }
+  
+  .login-logo {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .login-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .login-title{
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: -10px;
+    color: #8d3b3b;
+  }
+  
+  .login-nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .login-nav .active {
+    color: red;
+  }
+  
+  .login-form {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .login-form label {
+    display: block;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    
+  }
+  
+  .login-input {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 14px;
+
+  }
+  
+  .forgot-password {
+    font-size: 12px;
+    color: gray;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background: #8d3b3b;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .login-button:hover {
+    background: #a94e4e;
+  }
+
+
+  /* OTP Modal */
+.otp-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .otp-modal {
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .otp-input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .otp-button {
+    background: #6a0dad;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .otp-close {
+    background: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .otp-resend-text {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .otp-resend-text.disabled {
+    color: gray;
+    cursor: default;
+  }
+  
+
+  .otp-input-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    margin-bottom: 50px;
+  }
+  
+  .otp-input {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .otp-modal h3{
+    font-size: 24px;
+    color: #6a0dad;
+  }
+  
+
+  .password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .password-container input {
+    width: 105%;
+    padding-right: 40px; /* Ensures space for the eye icon */
+  }
+  
+ 
+
+  .otp-input-single{
+    width: 80%;
+    font-size: large;
+    padding: 10px;
+  }
+  

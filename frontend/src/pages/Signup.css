@@ -1,0 +1,193 @@
+.signup-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 24.5px;
+    background: #322e2e;
+}
+
+.signup-container img{
+  width: 10%;
+  height: auto;
+}
+
+.signup-left {
+  flex: 0 0 35%;
+    height: 680px;
+    background: url('../assets/airsoft.jpg') no-repeat center center/cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #0000001a;
+}
+
+.signup-right {
+  flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.login-text {
+  color: black;
+  cursor: pointer;
+}
+
+.signup-text {
+  color: red;
+  cursor: pointer;
+}
+
+.name-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.name-fields {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+
+.signup-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.next-button {
+  width: 50%;
+  padding: 10px;
+  background-color: #8d3b3b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.next-button:disabled {
+  background-color: gray;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: -5px;
+}
+
+.email-username-fields {
+  width: 95%;
+}
+
+.password-field {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+.password-strength {
+  margin-top: -5px;
+  margin-bottom: -5px;
+  font-size: 0.85rem;
+}
+.password-strength.weak {
+  color: red;
+}
+.password-strength.moderate {
+  color: orange;
+}
+.password-strength.strong {
+  color: green;
+}
+
+.char-limit-msg {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-top: 10px;
+  color: #333;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.terms-checkbox label {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.terms-checkbox a {
+  color: #6c42f5;
+  text-decoration: none;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+
+.terms-link {
+  color: #2563eb;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.terms-link:hover {
+  color: #1e40af;
+}
+
+.terms-modal h4{
+  color: #d00909;
+  margin-bottom: 1px;
+}
+
+.terms-modal button{
+  background-color: #f54242;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}

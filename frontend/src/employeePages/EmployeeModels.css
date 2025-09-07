@@ -1,0 +1,205 @@
+.models-container{
+    background-color: #1b251d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding-top: 20px;
+  }
+  
+  .models-container h2 {
+    color: #f4f4f4;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .models-container .models-container {
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .models-container .models-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .models-container .model-card {
+    width: 220px;
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #e4e4e4;
+    background: #2e3a31;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .models-container .model-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .models-container .model-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    
+    
+  }
+  
+  .models-container .model-card h3 {
+    margin-top: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f4f4f4;
+    text-align: center;
+  }
+  
+  /* Search bar and Add button */
+  .models-container .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  
+  .models-container .search-bar {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: #f4f4f4;
+    color: #222;
+    outline: none;
+    width: 250px;
+  }
+  
+  .models-container .add-button {
+    padding: 10px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Modal styles */
+  .models-container .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .models-container .modal-content {
+    background-color: #f4f4f4;
+    padding: 25px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 95%;
+  }
+  
+  .models-container .modal-content h3 {
+    margin-bottom: 20px;
+    color: #1b251d;
+  }
+  
+  .models-container .modal-content form div {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .models-container .modal-content input[type="text"],
+  .models-container .modal-content textarea,
+  .models-container .modal-content input[type="file"] {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: white;
+  }
+
+  .models-container .modal-content textarea{
+    max-width: 93.5%;
+    min-width: 93.5%;
+    min-height: 40px;
+  }
+  
+  .models-container .modal-content button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .models-container .modal-content button:hover {
+    background-color: #45a049;
+  }
+  
+  .models-container .success-message {
+    color: #2ecc71;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .models-container .error-message {
+    color: #e74c3c;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+
+  .models-container .edit-button{
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .models-container .delete-button{
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .action-models{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    
+  }

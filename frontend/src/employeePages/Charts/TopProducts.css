@@ -1,0 +1,71 @@
+.top-products-card {
+    background: #f9fafb;
+    padding: 5px 20px 20px;
+    border-radius: 12px;
+    flex: 1;
+    max-width: 750px;
+    min-width: 750px;
+    box-shadow: 0 2px 8px #0000000d;
+    
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .see-all {
+    font-size: 0.875rem;
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  
+  .top-products-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .top-products-table th,
+  .top-products-table td {
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  
+  .top-products-table thead {
+    background-color: #f9fafb;
+  }
+  
+  .rating-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .stars {
+    display: flex;
+    gap: 0.15rem;
+  }
+  
+  .rate-info {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+
+  .see-all {
+    font-size: 0.875rem;
+    color: #3b82f6;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  

@@ -1,0 +1,405 @@
+/* General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EAE6E6;
+}
+
+/* Top Navigation */
+ .employee-top-nav {
+    z-index: 900;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border: none;
+    height: 10%;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 10px 10px;
+    
+}
+
+/* Logo */
+
+.side-nav .logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    text-align: left;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.side-nav .logo img {
+    
+    width: 40px;
+    height: auto;
+    
+
+}
+
+
+.side-nav .logo p{
+  color: #ffcbcb;
+  font-weight: 600;
+}
+
+/* Icons */
+.icons {
+    color: #5b5b5b; ;
+    display: flex;
+    font-size: 26px;
+    gap: 25px;
+    align-items: center;
+}
+
+.employee-username-dropdown-container {
+    position: relative; /* Crucial: This establishes the positioning context for the dropdown */
+    display: flex; /* Keep flex to align username elements */
+    align-items: center;
+    /* Remove background from here if you want it only on .username */
+    /* background: #edebeb; */ /* Moved to .username */
+    border-radius: 5px; /* Add border-radius here to match .username */
+}
+
+.employee-username {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background: #edebeb; /* Apply background directly to .username */
+    padding: 5px 20px;
+    transition: background-color 0.2s ease;
+    cursor: pointer; /* Indicate it's clickable */
+    border-radius: 5px; /* Apply border-radius */
+}
+
+.employee-username:hover {
+    background-color: #e0e0e0; /* Lighter hover effect */
+}
+
+.employee-username-info {
+    color: #5b5b5b;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.employee-username-info p {
+    margin: 0;
+}
+
+.role-text {
+    color: #f84343;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.dropdown-icon {
+    font-size: 14px;
+    color: #5b5b5b;
+    /* cursor: pointer; Handled by .username now */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px); /* Position slightly below the .username-dropdown-container */
+    right: 0; /* Align to the right of its parent (.username-dropdown-container) */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    z-index: 1001; /* Ensure it's above everything else, especially the top nav */
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0; /* Add internal padding */
+}
+
+.dropdown-item {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 15px;
+    color: #333;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #ff6c6c;
+    color: white;
+}
+
+/* Notification Bell Container (for positioning badge and dropdown) */
+.notification-bell-container {
+    position: relative;
+    display: flex; /* Ensures bell icon is aligned with badge */
+    align-items: center;
+}
+
+.notification-bell-container .fa-reg-bell {
+    font-size: 26px; /* Match other icons */
+    cursor: pointer;
+    color: #555;
+    padding: 5px; /* Add some padding for easier clicking */
+    transition: color 0.2s ease;
+}
+
+.notification-bell-container .fa-reg-bell:hover {
+    color: #007bff; /* Example hover effect */
+}
+
+/* Notification Badge on Bell Icon */
+.notification-bell-badge {
+    position: absolute;
+    top: 0px; /* Adjust as needed */
+    right: -5px; /* Adjust as needed */
+    background-color: red;
+    color: white;
+    font-size: 10px; /* Smaller for bell */
+    padding: 2px 5px;
+    border-radius: 50%;
+    transform: translate(50%, -50%); /* Adjust position precisely */
+    z-index: 10; /* Ensure it's above the bell icon */
+    font-weight: bold;
+}
+
+/* Notification Dropdown Menu */
+.notification-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 15px); /* Position below the bell icon container */
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 350px; /* Adjust width as needed */
+    max-height: 400px; /* Max height for scroll if many notifications */
+    overflow-y: auto;
+    z-index: 1002; /* Higher z-index than user dropdown */
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-header p {
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    background-color: #f8f9fa;
+    text-align: left;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:last-child {
+    border-bottom: none; 
+}
+
+.notification-item:hover {
+    background-color: #f0f0f0;
+}
+
+.notification-item p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notification-message {
+    font-size: 14px;
+    color: #333;
+}
+
+.notification-message .customer-name {
+    font-weight: 600;
+    color: #007bff; 
+}
+
+.notification-message .total-amount {
+    font-weight: 600;
+    color: #28a745; 
+}
+
+.notification-products {
+    font-size: 12px;
+    color: #6c757d;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-width: 100%; 
+}
+
+.notification-date-time {
+    font-size: 11px;
+    color: #999;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.notification-item.no-notifications {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.notification-footer {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.notification-footer button {
+    background-color: #f63f3f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s ease;
+}
+
+.notification-footer button:hover {
+    background-color: #b02222;
+}
+
+
+/* Logout Button */
+.logout-button {
+    background: #f36969;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-size: 14px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.logout-button:hover {
+    background: #e74c3c;
+}
+
+
+/* Main Layout */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 70px); /* Adjust height based on top-nav */
+  }
+  
+  /* Side Navigation */
+  .side-nav {
+    z-index: 1000;
+    position: fixed;
+    
+    width: 230px;
+    height: 100vh;
+    background-color: #3a2a27;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+  
+  .side-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 8px;
+    font-size: 14px;
+    width: 80%;
+    transition: 0.3s;
+    text-align: left;
+    padding-left: 25px;
+    margin-bottom: 5px;
+  }
+
+  
+  
+  .side-nav a:hover {
+    color: #f36969;
+    
+  }
+  
+  .side-nav a.active {
+    color: #f36969;
+    background-color: #241916;
+    border-left: 4px solid #f36969;
+  }
+
+
+
+  .navigation-icon {
+    font-size: 18px;
+    vertical-align: middle;
+  }
+  
+  .nav-item-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .side-nav h2{
+    color: rgb(196, 196, 196);
+    font-size: 16px;
+    margin: 30px 0 10px 20px;
+    font-weight: 350;
+  }
+  
+  .divider{
+    width: 130%;
+    height: 1px;
+    background-color: #423431;
+    margin: 10px;
+    margin-bottom: 30px;
+  }
+
+  
+  /* Dashboard Content Area */
+  .dashboard-content {
+    margin-left: 230px; /* Adjust based on side-nav width */
+    padding-top: 75px; /* Adjust based on top-nav height */
+    flex: 1;
+    background-color: #f8fafb;
+  }
+
+
+  .notification-badge {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    margin-left: 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}

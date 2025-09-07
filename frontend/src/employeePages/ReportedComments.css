@@ -1,0 +1,133 @@
+.reported-comments-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  max-width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.reported-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 15px;
+}
+
+.reported-back-btn {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: color 0.2s ease-in-out;
+}
+
+.reported-back-btn:hover {
+  color: #555;
+}
+
+.reported-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.reported-search input {
+  width: 600px;
+  padding: 10px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.reported-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.reported-item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  width: 45%;
+}
+
+.reported-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reported-review {
+  background-color: #f3f0f0;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #fec7c7;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.reported-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reported-reporter {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.reported-date {
+  font-size: 12px;
+  color: #54585e;
+}
+
+.reported-text {
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+.reported-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.reported-empty {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+.reported-comments-loading,
+.reported-comments-error {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+  color: #555;
+}
+
+.reported-view-link {
+  color: #8e8e8e;
+  text-align: center;
+  font-size: 12px;
+
+}
+
+.reported-cause{
+    font-size: 12px;
+    font-weight: 500;
+    color: #b91c1c;
+    margin-top: 8px;
+}

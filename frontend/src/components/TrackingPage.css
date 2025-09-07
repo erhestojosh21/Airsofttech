@@ -1,0 +1,75 @@
+.tracking-container {
+    display: flex;
+  }
+  
+  .tracking-content {
+    flex: 1;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .shipment-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .status-badge {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+  }
+  
+  .tracking-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .tracking-step {
+    position: relative;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 3px solid #4CAF50;
+    margin-bottom: 10px;
+  }
+  
+  
+  .tracking-time {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .tracking-date {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .tracking-status {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .tracking-location {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .tracking-connector {
+    position: absolute;
+    width: 5px;
+    height: 25px;
+    background-color: #4CAF50;
+    left: 50%;
+    bottom: -25px;
+  }
+  
+  .last-step .tracking-connector {
+    display: none;
+  }
+  

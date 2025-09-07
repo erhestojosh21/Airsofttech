@@ -1,0 +1,285 @@
+.requested-variant {
+    width: 93%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.requested-variant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.requested-variant-title{
+    text-align: left;
+}
+
+.requested-variant-header h1 {
+    margin-top: 5px;
+    font-size: 30px;
+
+}
+
+.requested-variant-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.requested-variant-controls .delete-btn:hover {
+    background: #d32323;
+    color: white;
+    transition: ease-in-out 0.3s;
+    border: #d32323 solid 2px;
+}
+
+.requested-variant-controls .edit-btn:hover {
+    background: #935ca0;
+    color: white;
+    transition: ease-in-out 0.3s;
+    border: #935ca0 solid 2px;
+}
+
+.requested-variant-controls button {
+    font-weight: bold;
+    background: none;
+    color: #634e4b;
+    border: #634e4b solid 2px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin: 0 3px;
+}
+
+.requested-variant-controls button:hover {
+    background: #3a2a27;
+    color: white;
+}
+
+
+.requested-variant .product-preview {
+    width: 200px;
+    height: auto;
+    margin-top: 10px;
+    
+}
+
+.requested-variant-first-info {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 20px;
+    box-shadow: 0 2px 8px #0000000d;
+}
+
+.requested-variant-product-info{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    box-shadow: 0 2px 8px #0000000d;
+    padding: 20px;
+}
+
+.requested-variant-info{
+    width: 80%;
+    text-align: left;
+    background: white;
+    box-shadow: 0 2px 8px #0000000d;
+    padding: 50px;
+}
+
+
+.requested-variant-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.requested-variant-name, .requested-variant-name input{
+    font-size: 25px;
+    font-weight: bold; 
+}
+
+.requested-variant-name input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: #c6c4c4 0px 0px 1px 0px;
+    background: #ece9e9;
+    color: #606060;
+}
+
+
+.requested-variant-name p{
+    margin: 0;
+    color: #333;
+}
+
+
+.requested-variant-value{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+    
+}
+
+.requested-variant-price{
+    font-size: 16px;
+    margin: 15px;
+    color: #666;
+}
+
+
+.requested-variant-price input{
+    margin-left: 5px;
+    width: 50%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: #c6c4c4 0px 0px 1px 0px;
+    background: #ece9e9;
+    color: #606060;
+}
+
+.requested-variant-category{
+    font-size: 16px;
+    margin: 15px;
+    color: #666;
+}
+
+.requested-variant-category span{
+    font-weight: 600;
+    color: #d32323;
+}
+
+
+.requested-variant-description {
+    font-size: 16px;
+    margin: 25px 15px 15px 15px;
+    color: #666;
+}
+
+.requested-variant-description p{
+    word-break: break-all;
+    max-width: 1000px;
+    margin: 0;
+    color: #333;
+    background: #f9f6f6;
+    box-shadow: #c6c4c4 0px 0px 1px 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.requested-variant-description textarea {
+    width: 700px;
+    height: 100px;
+    resize: vertical;
+    font-size: 16px;
+}
+
+.requested-variant-status{
+    font-size: 16px;
+    margin: 15px;
+    color: #666;
+}
+
+.requested-variant-status .StatusLabel {
+    margin-left: 10px;
+}
+
+.variant-list {
+    margin-top: 20px;
+    text-align: left;
+    padding: 20px;
+    flex-direction: row;
+    align-items: center;
+    background: white;
+    box-shadow: 0 2px 8px #0000000d;
+}
+
+.variant-list table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 500;
+    padding-bottom: 100px;
+    
+}
+
+.variant-list th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.variant-list th {
+    padding: 15px 10px;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    font-weight: 600;
+    color: #8a8a8a;
+    background: #f1efef;
+    border-bottom: #f75252 solid 1.5px;
+}
+
+.variant-list td {
+    border-left: none;
+    border-right: none;
+    border-bottom: #f75252 solid 1px;
+    padding: 18px 18px; 
+    max-width: 200px;
+}
+
+.inventory-container .indexes{
+    font-weight: 600;
+    width: 20px;
+}
+
+.variant-list .indexes{
+    font-weight: 600;
+    width: 20px;
+}
+
+.variant-list .variant-name {
+    text-align: left;
+    min-width: 300px;
+    font-weight: 600;
+}
+
+.variant-list .variant-name input {
+    width: 100%;
+}
+
+.variant-list .variant-price{
+    min-width: 100px;
+    border-right: #55f752 dashed 2px;
+}
+
+.variant-list .variant-price p{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.variant-list .total-variant-label {
+    color: #d32323;
+    text-align: right;
+    border-right: #55f752 dashed 2px;
+}
+
+.variant-list .total-variant {
+    background: #31dd2128;
+}

@@ -1,0 +1,137 @@
+.requested-variants-container {
+    padding: 0 20px;
+    margin:  20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.requested-variants-container .title-req{
+    text-align: left;
+    font-weight: 700;
+    color: #8a8a8a;
+}
+
+.requested-variants-container .variant-filters {
+    margin: 1rem 0;
+}
+
+.requested-variants-container .filter-btn {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    min-width: 100px;
+}
+
+.requested-variants-container .filter-btn.active {
+    background: #010f1e;
+    color: white;
+    border-color: #ff0000;
+}
+
+.requested-variants-container .id{
+    text-align: left;
+    width: 20px;
+}
+
+.requested-variants-container .requested-variant-cell {
+    text-align: left;
+}
+.requested-variants-container .product-name {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-top: 0px;
+}
+
+.tbd-price {
+    color: #dc3545; 
+    font-weight: bold;
+    cursor: help; 
+    border-bottom: 1px dotted #dc3545; 
+}
+
+.requested-variants-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 500;
+    padding-bottom: 100px;
+    margin-top: 10px;
+    
+}
+
+.requested-variants-container th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.requested-variants-container th {
+    padding: 15px 10px;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    font-weight: 600;
+    color: #8a8a8a;
+    background: #f1efef;
+    border-bottom: #f75252 solid 1.5px;
+}
+
+.requested-variants-container td {
+    border-left: none;
+    border-right: none;
+    border-bottom: #f75252 solid 1px;
+    padding: 18px 18px; 
+    max-width: 200px;
+}
+
+.requested-variants-container .variant-name{
+    font-weight: 500;
+    color: #4a0b5a;
+    font-size: 16px;
+
+}
+
+.requested-variants-container .request-date {
+    text-align: left;
+    max-width: 70px;
+}
+
+.requested-variants-container .request-details {
+    max-width: 10px;
+}
+
+
+.status-approved {
+  color: #2196f3;
+  background-color: #e3f2fd;
+  border-radius:5px;
+  border: #dddddd solid 1px;
+  width: fit-content;
+  padding: 5px;
+  margin: auto;
+}
+
+.status-rejected {
+  color: #c82333; 
+  background-color: #fde3e3;
+  border-radius:5px;
+  border: #dddddd solid 1px;
+  width: fit-content;
+  padding: 5px;
+  margin: auto;
+}
+
+.status-pending {
+  color: #ff9900; 
+  background-color: #fff1db;
+  border-radius:5px;
+  border: #dddddd solid 1px;
+  width: fit-content;
+  padding: 5px;
+  margin: auto;
+}

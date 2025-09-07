@@ -1,0 +1,332 @@
+.employee-profile-container {
+  width: 93%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.inventory-details-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.employee-profile-first {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.cover-header {
+  background: #901D1D;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(90deg, rgba(144, 29, 29, 1) 7%, rgba(36, 8, 4, 1) 100%, rgba(144, 29, 29, 1) 56%);
+  background-size: cover;
+  height: 160px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.employee-profile-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.employee-image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 4px solid #fff;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.profile-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23888"%3E%3Cpath d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"%3E%3C/path%3E%3C/svg%3E');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.employee-header-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.employee-full-name {
+  font-size: 36px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.employee-full-name input {
+  font-size: 1em;
+  padding: 5px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.employee-role {
+  font-size: 20px;
+  color: #666;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.inventory-details-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.save-button,
+.confirm-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-button:hover,
+.confirm-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+
+.change-password-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.change-password-button:hover {
+  background-color: #5a6268;
+}
+
+.employee-profile-info-section {
+  padding: 30px;
+  padding-top: 0;
+}
+
+.employee-profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px 40px;
+}
+
+.employee-detail-item {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.employee-detail-item label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 4px;
+  font-size: 0.9em;
+}
+
+.employee-detail-item span,
+.employee-detail-item input,
+.employee-detail-item textarea {
+  font-size: 1.1em;
+  color: #333;
+  word-wrap: break-word;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.employee-detail-item input[readOnly],
+.employee-detail-item textarea[readOnly] {
+  background-color: #f5f5f5;
+  color: #777;
+  cursor: not-allowed;
+  border: 1px solid #eee;
+}
+
+.employee-address {
+  grid-column: 1 / -1;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .employee-profile-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .employee-profile-header-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .employee-image-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .employee-header-text {
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .employee-full-name {
+    justify-content: center;
+  }
+
+  .employee-full-name input {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .inventory-details-controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .inventory-details-controls button {
+    width: 100%;
+  }
+
+  .employee-profile-info-section {
+    padding: 20px;
+  }
+
+  .employee-profile-details-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .employee-address {
+    grid-column: auto;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-actions button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+.employee-profile-container.loading,
+.employee-profile-container.error-message {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2em;
+  color: #666;
+}
+
+.employee-profile-container.error-message {
+  color: #d9534f;
+}
+
+.employee-profile-container .permissions-display {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    margin-top: 5px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.employee-profile-container .permissions-display ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.employee-profile-container .permissions-display li {
+    background-color: #e0f2f7;
+    color: #0056b3;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.employee-profile-container .permissions-display p {
+    font-style: italic;
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 10px 0;
+}
