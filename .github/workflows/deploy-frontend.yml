@@ -1,45 +1,72 @@
-name: Deploy Frontend to Azure App Service
+# File: .github/workflows/deploy-frontend.yml
+# Deploy React frontend only to Azure Static Web App - airsoft-frontend
+
+name: Build and Deploy React Frontend to Azure
 
 on:
   push:
     branches:
-      - main  # triggers on push to main branch
+      - main
+    paths:
+      - 'frontend/**'    # Only trigger when frontend files change
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
-      # 1️⃣ Checkout the repo
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      # Checkout repo
+      - uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js 22
-      - name: Setup Node.js
+      # Set Node.js version
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '22.x'
 
-      # 3️⃣ Install frontend dependencies
-      - name: Install dependencies
+      # Install dependencies and build React app
+      - name: Install and Build Frontend
         working-directory: ./frontend
-        run: npm install
+        run: |
+          npm install
+          npm run build
 
-      # 4️⃣ Build React production
-      - name: Build React app
-        working-directory: ./frontend
-        run: CI=false npm run build
+      # Upload frontend build artifact
+      - name: Upload Frontend Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-app
+          path: ./frontend/build
 
-      # 5️⃣ Azure login using Service Principal
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      # Download frontend build artifact
+      - name: Download Frontend Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-app
+
+      # Login to Azure
       - name: Azure Login
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
-           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          client-id: ${{ secrets.__clientidsecretname__ }}
+          tenant-id: ${{ secrets.__tenantidsecretname__ }}
+          subscription-id: ${{ secrets.__subscriptionidsecretname__ }}
 
-      # 6️⃣ Deploy build folder to Azure App Service
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
+      # Deploy to Azure Static Web App or Web App
+      - name: Deploy Frontend to Azure
+        uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          slot-name: production
+          app-name: 'airsoft-frontend'   # Your frontend app name
+          slot-name: 'Production'
           package: ./frontend/build
