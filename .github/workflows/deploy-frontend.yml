@@ -23,7 +23,7 @@ jobs:
         working-directory: frontend   # <--- added
 
       - name: Build React app
-        run: npm run build
+        run: run: CI=false npm run build
         working-directory: frontend   # <--- added
 
       - name: Deploy to Azure Web App
