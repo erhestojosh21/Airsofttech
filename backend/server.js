@@ -22,7 +22,7 @@ const helmet = require('helmet');
 
 
 dotenv.config(); // Load environment variables from a .env file
-
+const app = express();
 // Configure storage for uploaded images
 const memoryStorage = multer.memoryStorage();
 
@@ -47,14 +47,6 @@ app.listen(PORT, () => {
 app.use(helmet());
 app.use(cookieParser());
 
-app.use(cors({
-  origin: [
-    "http://localhost:3000", // local development
-    "https://airsoft-frontend-hebaa4f6g4gyhmeb.southeastasia-01.azurewebsites.net" // deployed frontend
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
 
 app.use(express.json({ limit: "10mb" })); // Allow up to 10MB requests
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
