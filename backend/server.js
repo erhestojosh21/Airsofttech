@@ -99,11 +99,6 @@ const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString()
 
 
 
-
-
-SIGN UP SERVER 
-
-
 */
 const { body, validationResult } = require("express-validator");
 
