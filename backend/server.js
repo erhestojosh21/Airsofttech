@@ -37,8 +37,12 @@ const storage = multer.diskStorage({
 const memoryUpload = multer({ storage: multer.memoryStorage() });
 const upload = multer({ storage: storage });
 
-const app = express();
 const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Access it at your Railway URL: https://<your-project>.up.railway.app`);
+});
+
 
 app.use(helmet());
 app.use(cookieParser());
