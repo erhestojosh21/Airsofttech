@@ -343,7 +343,7 @@ app.post("/verify-captcha", async (req, res) => {
     if (!token) return res.status(400).json({ success: false, message: "No token provided" });
   
     try {
-      const secretKey = "6LdKIhArAAAAADog7lvEQOXGt7m6gie5yWdTfKND"; // <-- Use your secret key from Google
+      const secretKey = "6Lc32cIrAAAAAIlMJtVegsW4s62Ct5tnvythbtHZ"; // <-- Use your secret key from Google
       const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
   
       const response = await axios.post(verifyURL);
