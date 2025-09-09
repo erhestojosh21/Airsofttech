@@ -22,7 +22,7 @@ const helmet = require('helmet');
 
 
 dotenv.config(); // Load environment variables from a .env file
-
+const app = express();
 // Configure storage for uploaded images
 const memoryStorage = multer.memoryStorage();
 
@@ -37,20 +37,22 @@ const storage = multer.diskStorage({
 const memoryUpload = multer({ storage: multer.memoryStorage() });
 const upload = multer({ storage: storage });
 
-const app = express();
 const PORT = process.env.PORT || 5000;
-
-app.use(helmet());
-app.use(cookieParser());
-
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Access it at your Railway URL: https://<your-project>.up.railway.app`);
+});
 app.use(cors({
   origin: [
     "http://localhost:3000", // local development
-    "https://airsoft-frontend-hebaa4f6g4gyhmeb.southeastasia-01.azurewebsites.net" // deployed frontend
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+app.use(helmet());
+app.use(cookieParser());
+
 
 app.use(express.json({ limit: "10mb" })); // Allow up to 10MB requests
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
@@ -102,18 +104,8 @@ const transporter = nodemailer.createTransport({
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
 
 
-//server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
-
-/*
 
 
-SIGN UP SERVER 
-
-
-*/
 const { body, validationResult } = require("express-validator");
 
 
