@@ -93,13 +93,15 @@ async function generateAccessToken() {
 }
 
 
-// Email Transporter
+// Create a reusable transporter using environment variables
 const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: "edgicustomworks100@gmail.com",
-        pass: "wdlxvrciemwkzhsr",
-    },
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
+  secure: true, // true for port 465, false for 587
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
 // Generate random OTP
