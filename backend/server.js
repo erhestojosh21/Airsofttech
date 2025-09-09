@@ -42,14 +42,19 @@ const upload = multer({ storage: storage });
 app.use(helmet());
 app.use(cookieParser());
 
+// 1️⃣ CORS middleware
 app.use(cors({
   origin: [
-    "http://localhost:3000", // local development
-    "https://airsofttech-production-aa4e.up.railway.app", // deployed frontend
+    "http://localhost:3000", // local dev
+    "https://airsofttech-production-aa4e.up.railway.app" // frontend Railway
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
+
+// 2️⃣ Handle preflight OPTIONS requests
+app.options("*", cors());
+
 
 app.use(express.json({ limit: "10mb" })); // Allow up to 10MB requests
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
