@@ -22,7 +22,7 @@ const Captcha = ({ onVerify }) => {
   return (
     <div className="captcha-wrapper">
       <ReCAPTCHA
-        sitekey="6Lc32cIrAAAAAFWyYw9aAZ1W08194hVZIKkwcoZI" // <-- Replace with your actual site key
+        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY} // <-- Replace with your actual site key
         onChange={handleChange}
       />
     </div>
