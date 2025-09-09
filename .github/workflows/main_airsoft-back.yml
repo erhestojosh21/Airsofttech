@@ -63,6 +63,7 @@ jobs:
       - name: Deploy Backend to Azure
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'airsoft-api'
+          app-name: 'airsoft-back'
           slot-name: 'Production'
           package: ./backend-app   # <- points to the downloaded artifact folder
+
