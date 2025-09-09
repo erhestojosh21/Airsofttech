@@ -37,19 +37,6 @@ const storage = multer.diskStorage({
 const memoryUpload = multer({ storage: multer.memoryStorage() });
 const upload = multer({ storage: storage });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Access it at your Railway URL: https://<your-project>.up.railway.app`);
-});
-app.use(cors({
-  origin: [
-    "http://localhost:3000", // local development
-    "https://airsofttech-production-aa4e.up.railway.app", // deployed frontend
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
 
 
 app.use(helmet());
@@ -69,7 +56,7 @@ const io = socketIo(server, {
 */
 
 const productCache = new NodeCache({ stdTTL: 300 }); // Cache for 5 minutes
-const secretKey = "Hakdomatigas0"; // Change this to a secure key
+const secretKey = process.env.JWT_SECRET; // Change this to a secure key
 const authenticateToken = require('./middleware/authMiddleware')(pool, secretKey);
 const tempUsers = {}; // Temporary storage for OTP & user data
 const otpStore = {}; // OTP store for password reset
@@ -6541,3 +6528,16 @@ app.get('/api/admin/chat-stats', async (req, res) => {
   }
 });
 
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Access it at your Railway URL: https://<your-project>.up.railway.app`);
+});
+app.use(cors({
+  origin: [
+    "http://localhost:3000", // local development
+    "https://airsofttech-production-aa4e.up.railway.app", // deployed frontend
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
