@@ -42,7 +42,13 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Access it at your Railway URL: https://<your-project>.up.railway.app`);
 });
-
+app.use(cors({
+  origin: [
+    "http://localhost:3000", // local development
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 app.use(helmet());
 app.use(cookieParser());
