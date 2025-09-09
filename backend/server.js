@@ -45,10 +45,12 @@ app.listen(PORT, () => {
 app.use(cors({
   origin: [
     "http://localhost:3000", // local development
+    "https://airsofttech-production-aa4e.up.railway.app", // deployed frontend
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
 
 app.use(helmet());
 app.use(cookieParser());
