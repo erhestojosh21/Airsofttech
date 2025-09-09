@@ -42,6 +42,14 @@ const upload = multer({ storage: storage });
 app.use(helmet());
 app.use(cookieParser());
 
+app.use(cors({
+  origin: [
+    "http://localhost:3000", // local development
+    "https://airsofttech-production-aa4e.up.railway.app", // deployed frontend
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 app.use(express.json({ limit: "10mb" })); // Allow up to 10MB requests
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
@@ -6533,11 +6541,4 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Access it at your Railway URL: https://<your-project>.up.railway.app`);
 });
-app.use(cors({
-  origin: [
-    "http://localhost:3000", // local development
-    "https://airsofttech-production-aa4e.up.railway.app", // deployed frontend
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+
