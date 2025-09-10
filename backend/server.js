@@ -18,12 +18,19 @@ const path = require("path");
 const fs = require("fs");
 const helmet = require('helmet');
 const twilio = require("twilio");
-const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const twilioSid = process.env.TWILIO_SID;
+const twilioToken = process.env.TWILIO_AUTH_TOKEN;
+let twilioClient;
 
 //const socketIo = require("socket.io");
 //const http = require("http");
 
-
+if (twilioSid && twilioToken) {
+    twilioClient = twilio(twilioSid, twilioToken);
+    console.log("✅ Twilio client initialized");
+} else {
+    console.warn("⚠️ Twilio credentials missing. Client not initialized.");
+}
 dotenv.config(); // Load environment variables from a .env file
 const app = express();
 // Configure storage for uploaded images
@@ -49,7 +56,8 @@ app.use(cookieParser());
 app.use(cors({
   origin: [
     "http://localhost:3000", // local dev
-    
+    "https://airsofttech-production-aa4e.up.railway.app" // frontend Railway
+
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
@@ -6563,8 +6571,7 @@ app.get('/api/admin/chat-stats', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Access it at your Railway URL: https://<your-project>.up.railway.app`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
