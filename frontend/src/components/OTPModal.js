@@ -7,8 +7,8 @@ const OTPModal = ({ email, onClose, onSuccess }) => {
   const [otp, setOtp] = useState("");
   const [countdown, setCountdown] = useState(300);
   const [resendDisabled, setResendDisabled] = useState(true);
-  const [channel, setChannel] = useState("email"); // email or sms
-  const [phone, setPhone] = useState(""); // will now store intl format
+  const [channel, setChannel] = useState(""); // require user selection
+  const [phone, setPhone] = useState("");
   const [tempUserId, setTempUserId] = useState(null);
 
   useEffect(() => {
@@ -28,6 +28,10 @@ const OTPModal = ({ email, onClose, onSuccess }) => {
 
   // Request OTP
   const requestOTP = async () => {
+    if (!channel) {
+      alert("Please select a delivery channel (Email or SMS).");
+      return;
+    }
     if (channel === "sms" && !phone) {
       alert("Please enter a valid phone number.");
       return;
@@ -119,6 +123,8 @@ const OTPModal = ({ email, onClose, onSuccess }) => {
           </label>
         </div>
 
+        {!channel && <p style={{ color: "red" }}>Please select Email or SMS</p>}
+
         {/* Phone input if SMS is chosen */}
         {channel === "sms" && (
           <div style={{ marginTop: "10px" }}>
@@ -126,14 +132,18 @@ const OTPModal = ({ email, onClose, onSuccess }) => {
               placeholder="Enter phone number"
               value={phone}
               onChange={setPhone}
-              defaultCountry="PH"   // you can change or remove this
+              defaultCountry="PH"
               international
               required
             />
           </div>
         )}
 
-        <button onClick={requestOTP} style={{ marginTop: "10px" }}>
+        <button
+          onClick={requestOTP}
+          style={{ marginTop: "10px" }}
+          disabled={!channel || (channel === "sms" && !phone)}
+        >
           Request OTP
         </button>
 
