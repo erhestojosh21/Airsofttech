@@ -3,7 +3,7 @@ name: Build and Deploy Backend to Azure
 on:
   push:
     branches:
-      - main
+      - sms-otp-feature
     paths:
       - 'backend/**'
   workflow_dispatch:
@@ -66,5 +66,6 @@ jobs:
           app-name: 'airsoft-back'
           slot-name: 'Production'
           package: ./backend-app   # <- points to the downloaded artifact folder
+
 
 
