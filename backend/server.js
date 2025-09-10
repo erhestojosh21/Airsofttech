@@ -17,6 +17,9 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const helmet = require('helmet');
+const twilio = require("twilio");
+const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
 //const socketIo = require("socket.io");
 //const http = require("http");
 
@@ -46,7 +49,7 @@ app.use(cookieParser());
 app.use(cors({
   origin: [
     "http://localhost:3000", // local dev
-    "https://airsofttech-production-aa4e.up.railway.app" // frontend Railway
+    
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
@@ -68,6 +71,24 @@ const io = socketIo(server, {
 });
 */
 
+/**
+ * Sends OTP via SMS using Twilio
+ * @param {string} phoneNumber Recipient phone number (format: +639XXXXXXXXX)
+ * @param {string} otp One-Time Password
+ */
+async function sendOTPviaSMS(phoneNumber, otp) {
+  try {
+    const message = await twilioClient.messages.create({
+      body: `Your OTP code is: ${otp}`,
+      from: process.env.TWILIO_PHONE_NUMBER, // must be a verified Twilio number
+      to: phoneNumber, // example: "+639XXXXXXXXX"
+    });
+    console.log("✅ OTP sent via SMS:", message.sid);
+  } catch (error) {
+    console.error("❌ Error sending SMS:", error);
+    throw new Error("Failed to send OTP via SMS");
+  }
+}
 const productCache = new NodeCache({ stdTTL: 300 }); // Cache for 5 minutes
 const secretKey = process.env.JWT_SECRET; // Change this to a secure key
 const authenticateToken = require('./middleware/authMiddleware')(pool, secretKey);
@@ -121,13 +142,15 @@ app.post("/request-otp",
     body("email").isEmail().normalizeEmail().withMessage("Invalid email"),
     body("username").trim().escape().isLength({ min: 3 }).withMessage("Username must be at least 3 characters"),
     body("password").trim().isLength({ min: 6 }).withMessage("Password must be at least 6 characters"),
+    body("channel").optional().isIn(["email", "sms"]),
+    body("phone").optional().isMobilePhone()
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
     await poolConnect;
-    const { first_name, last_name, email, username, password } = req.body;
+    const { first_name, last_name, email, username, password, channel = "email", phone } = req.body;
 
     try {
       const result = await pool
@@ -166,31 +189,34 @@ app.post("/request-otp",
         password: hashedPassword,
         otp,
         expiresAt,
+        channel,
+        phone,
       };
 
-      console.log(`Generated OTP for ${email}: ${otp}`);
-
-      await transporter.sendMail({
-        from: "your-email@gmail.com",
-        to: email,
-        subject: "Sign Up OTP Code",
-        html: `<div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; text-align: center;">
-                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                        <img src="https://scontent.fmnl30-3.fna.fbcdn.net/v/t39.30808-6/462146962_8553736841375910_5455853687705156246_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFR9BRmzDBZuVnDqrf1WLWKwC8O9nDDwUbALw72cMPBRmFp3EqpAlPkP0kfM8cwtktg3aySIqavnVTkwufQ0fnk&_nc_ohc=rhh4Digyi1oQ7kNvgG-w_Oi&_nc_oc=AdjtLd240K83_aUsWDJpFLrqeL2hojchNJSAgLiU-2M2TMaalQ5EYzeVEqicZADBdns&_nc_zt=23&_nc_ht=scontent.fmnl30-3.fna&_nc_gid=AaRaU9ol_ei8fHv7aEK88_2&oh=00_AYFHQ-Tf7uQMYzJB8mE9oUYp6c_IwgGS60FwYy381rlHiA&oe=67D74537" alt="Logo" style="height: 50px; margin-right: 10px;">
-                        
-                    </div>
-                    <h2 style="color: #333;">Sign Up Verification</h2>
-                    <p style="font-size: 14px; color: #666;">Please use the following One Time Verification (OTP)</p>
-                    <p style="font-size: 32px; font-weight: bold; color: darkred; letter-spacing: 5px;">${otp}</p>
-                    <p style="font-size: 14px; color: #666;">This password is only valid for the next <strong>5 minutes</strong>.</p>
-                    <p style="font-size: 14px; color: #666;">
-                        If you did not request this email, please contact the administrator at 
-                        <a href="mailto:edgicustomworks100@gmail.com" style="color: purple; text-decoration: none;">edgicustomworks100@gmail.com</a>
-                    </p>
+      if (channel === "email") {
+        await transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: email,
+          subject: "Sign Up OTP Code",
+          html: `<div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; text-align: center;">
+                  <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                      <img src="https://scontent.fmnl30-3.fna.fbcdn.net/v/t39.30808-6/462146962_8553736841375910_5455853687705156246_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFR9BRmzDBZuVnDqrf1WLWKwC8O9nDDwUbALw72cMPBRmFp3EqpAlPkP0kfM8cwtktg3aySIqavnVTkwufQ0fnk&_nc_ohc=rhh4Digyi1oQ7kNvgG-w_Oi&_nc_oc=AdjtLd240K83_aUsWDJpFLrqeL2hojchNJSAgLiU-2M2TMaalQ5EYzeVEqicZADBdns&_nc_zt=23&_nc_ht=scontent.fmnl30-3.fna&_nc_gid=AaRaU9ol_ei8fHv7aEK88_2&oh=00_AYFHQ-Tf7uQMYzJB8mE9oUYp6c_IwgGS60FwYy381rlHiA&oe=67D74537" alt="Logo" style="height: 50px; margin-right: 10px;">
+                  </div>
+                  <h2 style="color: #333;">Sign Up Verification</h2>
+                  <p style="font-size: 14px; color: #666;">Please use the following One Time Verification (OTP)</p>
+                  <p style="font-size: 32px; font-weight: bold; color: darkred; letter-spacing: 5px;">${otp}</p>
+                  <p style="font-size: 14px; color: #666;">This password is only valid for the next <strong>5 minutes</strong>.</p>
+                  <p style="font-size: 14px; color: #666;">
+                      If you did not request this email, please contact the administrator at 
+                      <a href="mailto:edgicustomworks100@gmail.com" style="color: purple; text-decoration: none;">edgicustomworks100@gmail.com</a>
+                  </p>
                 </div>`,
-      });
+        });
+      } else if (channel === "sms" && phone) {
+        await sendOTPviaSMS(phone, otp);
+      }
 
-      res.json({ message: "OTP sent to email", tempUserId });
+      res.json({ message: `OTP sent via ${channel}`, tempUserId });
     } catch (error) {
       console.error("Signup error:", error);
       res.status(500).json({ error: "Server error" });
@@ -202,73 +228,72 @@ app.post("/request-otp",
 // OTP Verification and Insert User
 // **Verify Signup OTP**
 app.post("/verify-otp", async (req, res) => {
-    const { email, otp, tempUserId } = req.body;
+  const { email, otp, tempUserId } = req.body;
 
-    // Validate request
-    if (!tempUsers[tempUserId]) {
-        return res.status(400).json({ error: "Invalid request" });
+  // Validate request
+  if (!tempUsers[tempUserId]) {
+    return res.status(400).json({ error: "Invalid request" });
+  }
+
+  const { first_name, last_name, username, password, expiresAt, otp: storedOtp } = tempUsers[tempUserId];
+
+  // Expired OTP check
+  if (Date.now() > expiresAt) {
+    delete tempUsers[tempUserId];
+    return res.status(400).json({ error: "OTP expired" });
+  }
+
+  // OTP match check
+  if (storedOtp !== otp) {
+    return res.status(400).json({ error: "Invalid OTP" });
+  }
+
+  try {
+    const user_tag = generateRandomUserTag(6);
+
+    // Insert new user
+    await pool.request()
+      .input("first_name", sql.VarChar, first_name)
+      .input("last_name", sql.VarChar, last_name)
+      .input("email", sql.VarChar, email)
+      .input("username", sql.VarChar, username)
+      .input("password", sql.VarChar, password)
+      .input("user_tag", sql.VarChar, user_tag)
+      .query(
+        `INSERT INTO Users (first_name, last_name, email, username, password, user_tag)
+         VALUES (@first_name, @last_name, @email, @username, @password, @user_tag)`
+      );
+
+    // Retrieve new user's ID + Username
+    const userResult = await pool
+      .request()
+      .input("email", sql.VarChar, email)
+      .query("SELECT UserID, Username FROM Users WHERE email = @email");
+
+    if (userResult.recordset.length === 0) {
+      return res.status(500).json({ error: "User insertion failed" });
     }
 
-    const { first_name, last_name, username, password, expiresAt, otp: storedOtp } = tempUsers[tempUserId];
+    const { UserID, Username } = userResult.recordset[0];
+    delete tempUsers[tempUserId]; // clear temp storage
 
-    // Expired OTP check
-    if (Date.now() > expiresAt) {
-        delete tempUsers[tempUserId];
-        return res.status(400).json({ error: "OTP expired" });
-    }
+    // Create JWT like login flow
+    const token = jwt.sign({ email, UserID }, secretKey, { expiresIn: "1h" });
 
-    // OTP match check
-    if (storedOtp !== otp) {
-        return res.status(400).json({ error: "Invalid OTP" });
-    }
+    // Set secure HttpOnly cookie
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "Strict",
+      maxAge: 3600000
+    });
 
-    try {
-        const user_tag = generateRandomUserTag(6);
-
-        // Insert new user
-        await pool.request()
-            .input("first_name", sql.VarChar, first_name)
-            .input("last_name", sql.VarChar, last_name)
-            .input("email", sql.VarChar, email)
-            .input("username", sql.VarChar, username)
-            .input("password", sql.VarChar, password)
-            .input("user_tag", sql.VarChar, user_tag)
-            .query(
-                `INSERT INTO Users (first_name, last_name, email, username, password, user_tag)
-                 VALUES (@first_name, @last_name, @email, @username, @password, @user_tag)`
-            );
-
-        // Retrieve new user's ID + Username
-        const userResult = await pool
-            .request()
-            .input("email", sql.VarChar, email)
-            .query("SELECT UserID, Username FROM Users WHERE email = @email");
-
-        if (userResult.recordset.length === 0) {
-            return res.status(500).json({ error: "User insertion failed" });
-        }
-
-        const { UserID, Username } = userResult.recordset[0];
-        delete tempUsers[tempUserId]; // clear temp storage
-
-        // Create JWT like login flow
-        const token = jwt.sign({ email, UserID }, secretKey, { expiresIn: "1h" });
-
-        // Set secure HttpOnly cookie
-        res.cookie("authToken", token, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "Strict",
-            maxAge: 3600000
-        });
-
-        res.json({ message: "Signup successful & logged in!", userID: UserID, username: Username });
-    } catch (error) {
-        console.error("Signup OTP Verification Error:", error);
-        res.status(500).json({ error: "Server error" });
-    }
+    res.json({ message: "Signup successful & logged in!", userID: UserID, username: Username });
+  } catch (error) {
+    console.error("Signup OTP Verification Error:", error);
+    res.status(500).json({ error: "Server error" });
+  }
 });
-
 
 
 /**
@@ -287,8 +312,7 @@ function generateRandomUserTag(length) {
 }
 
 
-
-// Resend OTP
+// Resend OTP (Email + SMS)
 app.post("/resend-otp",
   [body("email").isEmail().normalizeEmail().withMessage("Invalid email")],
   async (req, res) => {
@@ -309,33 +333,30 @@ app.post("/resend-otp",
     try {
       console.log(`Resent OTP for ${email}: ${otp}`);
 
-      await transporter.sendMail({
-        from: "your-email@gmail.com",
-        to: email,
-        subject: "Sign Up OTP Code",
-        html: `<div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; text-align: center;">
-                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                        <img src="https://scontent.fmnl30-3.fna.fbcdn.net/v/t39.30808-6/462146962_8553736841375910_5455853687705156246_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFR9BRmzDBZuVnDqrf1WLWKwC8O9nDDwUbALw72cMPBRmFp3EqpAlPkP0kfM8cwtktg3aySIqavnVTkwufQ0fnk&_nc_ohc=rhh4Digyi1oQ7kNvgG-w_Oi&_nc_oc=AdjtLd240K83_aUsWDJpFLrqeL2hojchNJSAgLiU-2M2TMaalQ5EYzeVEqicZADBdns&_nc_zt=23&_nc_ht=scontent.fmnl30-3.fna&_nc_gid=AaRaU9ol_ei8fHv7aEK88_2&oh=00_AYFHQ-Tf7uQMYzJB8mE9oUYp6c_IwgGS60FwYy381rlHiA&oe=67D74537" alt="Logo" style="height: 50px; margin-right: 10px;">
-                        
-                    </div>
-                    <h2 style="color: #333;">Sign UpVerification</h2>
-                    <p style="font-size: 14px; color: #666;">Please use the following One Time Verification (OTP)</p>
-                    <p style="font-size: 32px; font-weight: bold; color: darkred; letter-spacing: 5px;">${otp}</p>
-                    <p style="font-size: 14px; color: #666;">This password is only valid for the next <strong>5 minutes</strong>.</p>
-                    <p style="font-size: 14px; color: #666;">
-                        If you did not request this email, please contact the administrator at 
-                        <a href="mailto:edgicustomworks100@gmail.com" style="color: purple; text-decoration: none;">edgicustomworks100@gmail.com</a>
-                    </p>
+      if (tempUsers[tempUserId].channel === "email") {
+        await transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: email,
+          subject: "Sign Up OTP Code",
+          html: `<div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; text-align: center;">
+                  <h2 style="color: #333;">Sign Up Verification</h2>
+                  <p style="font-size: 14px; color: #666;">Please use the following One Time Verification (OTP)</p>
+                  <p style="font-size: 32px; font-weight: bold; color: darkred; letter-spacing: 5px;">${otp}</p>
+                  <p style="font-size: 14px; color: #666;">This password is only valid for the next <strong>5 minutes</strong>.</p>
                 </div>`,
-      });
+        });
+      } else if (tempUsers[tempUserId].channel === "sms" && tempUsers[tempUserId].phone) {
+        await sendOTPviaSMS(tempUsers[tempUserId].phone, otp);
+      }
 
-      res.json({ message: "New OTP sent!" });
+      res.json({ message: `New OTP sent via ${tempUsers[tempUserId].channel}` });
     } catch (error) {
       console.error("Error sending OTP:", error);
       res.status(500).json({ error: "Failed to send OTP" });
     }
   }
 );
+
 
 
 
