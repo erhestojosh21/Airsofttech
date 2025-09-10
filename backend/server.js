@@ -56,8 +56,7 @@ app.use(cookieParser());
 app.use(cors({
   origin: [
     "http://localhost:3000", // local dev
-    "https://airsofttech-production-aa4e.up.railway.app", // frontend Railway
-    "https://airsofttech-sms-otp-feature1.up.railway.app"
+    "https://airsofttech-sms-otp-feature1.up.railway.app" // frontend Railway
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
